@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="FICODES" name="quantumleap-2-echart" version="0.1.1">
+    <details>
+        <title>QuantumLeap 2 Echart</title>
+        <homepage>https://gitlab.com/ficodes/airis-ps/widgets/quantumleap2echart</homepage>
+        <authors>Carlos Blanco &lt;cblanco@ficodes.com&gt;</authors>
+        <email>cblanco@ficodes.com</email>
+        <image></image>
+        <description>Transform quantumLeap history into EChart dataset.</description>
+        <longdescription>DESCRIPTION.md</longdescription>
+        <license>Apache License 2.0</license>
+        <licenseurl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseurl>
+        <doc>doc/userguide.md</doc>
+        <changelog>doc/changelog.md</changelog>
+        <issuetracker></issuetracker>
+    </details>
+    <requirements>
+        <feature name="NGSI"/>
+    </requirements>
+    <preferences>
+        <preference name="styled_gradient" type="boolean" label="gradient" default="true" />
+        <preference name="gradient_colors" type="text" label="gradient colors" default="#030161, red" />
+        <preference name="areas" type="boolean" label="areas" default="false" />
+        <preference name="show_points" type="boolean" label="Show Points" default="true" />
+        <preference name="dates_format" type="text" label="Dates format template(moment.js)" default="MMM DD HH:mm:ss" />
+        <preference name="chart1_title" type="text" label="Chart 1 title" default="" />
+        <preference name="chart1_type" type="text" label="Chart 1 line/bar/scatter" default="line" />
+        <preference name="chart1_attr" type="text" label="Chart 1 attributes (max 2)" default="" />
+        <preference name="chart2_title" type="text" label="Chart 2 title" default="" />
+        <preference name="chart2_type" type="text" label="Chart 2 line/bar/scatter" default="line" />
+        <preference name="chart2_attr" type="text" label="Chart 2 attributes (max 2)" default="" />
+        <preference name="chart3_title" type="text" label="Chart 3 title" default="" />
+        <preference name="chart3_type" type="text" label="Chart 3 line/bar/scatter" default="line" />
+        <preference name="chart3_attr" type="text" label="Chart 3 attributes (max 2)" default="" />
+        <preference name="chart4_title" type="text" label="Chart 4 title" default="" />
+        <preference name="chart4_type" type="text" label="Chart 4 line/bar/scatter)" default="line" />
+        <preference name="chart4_attr" type="text" label="Chart 4 attributes (max 2)" default="" />
+    </preferences>
+    <wiring>
+        <inputendpoint
+                name="ql_history"
+                type="text"
+                label="QuantumLeap historical data"
+                description="QuantumLeap format historical information"
+                friendcode="qlhistory"
+        />
+        <outputendpoint
+                name="echart_data"
+                type="text"
+                label="EChart dataset"
+                description="EChart dataset"
+                friendcode="echartconfig"
+        />
+    </wiring>
+    <scripts>
+        <script src="lib/js/moment-with-locales.min.js"/>
+        <script src="js/QuantumLeap2Echart.js"></script>
+        <script src="js/main.js"></script>
+    </scripts>
+
+</operator>
