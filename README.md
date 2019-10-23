@@ -45,3 +45,5 @@ find general information about how to use operators on the
 ## Copyright and License
 
 Copyright (c) 2019 Future Internet Consulting and Development Solutions.
+
+Apache License 2.0
