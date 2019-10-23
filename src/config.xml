@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="FICODES" name="quantumleap-2-echart" version="0.1.2">
+<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="FICODES" name="quantumleap-2-echart" version="0.1.3">
     <details>
         <title>QuantumLeap 2 Echart</title>
         <homepage>https://github.com/Ficodes/quantumleap-2-echart-operator</homepage>
