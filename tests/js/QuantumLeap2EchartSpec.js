@@ -1,10 +1,10 @@
 /*
  * QuantumLeap2Echart
- * Copyright (c) 2018 Future Internet Consulting and Development Solutions S.L.
+ * Copyright (c) 2019 Future Internet Consulting and Development Solutions S.L.
  *
  */
 
-/* globals MashupPlatform, MockMP, beforeAll, afterAll, beforeEach, QuantumLeap2Echart, moment*/
+/* globals MashupPlatform, MockMP, beforeAll, afterAll, beforeEach, QuantumLeap2Echart */
 
 (function () {
 
