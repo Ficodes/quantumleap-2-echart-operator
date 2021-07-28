@@ -1,16 +1,16 @@
 /*
- * QuantumLeap2Echart
+ * QuantumLeap2ECharts
  * Copyright (c) 2019 Future Internet Consulting and Development Solutions S.L.
  *
  */
 
-/* globals MashupPlatform, MockMP, beforeAll, afterAll, beforeEach, QuantumLeap2Echart */
+/* globals MashupPlatform, MockMP, beforeAll, afterAll, beforeEach, QuantumLeap2ECharts */
 
 (function () {
 
     "use strict";
 
-    describe("QuantumLeap2Echart operator should", function () {
+    describe("QuantumLeap2ECharts operator should", function () {
 
         var operator;
 
@@ -94,7 +94,7 @@
             jasmine.clock().install();
             MashupPlatform.reset();
             historyExampleSeries = JSON.parse(JSON.stringify(INITIAL_SERIE));
-            operator = new QuantumLeap2Echart();
+            operator = new QuantumLeap2ECharts();
         });
 
         afterEach(function () {

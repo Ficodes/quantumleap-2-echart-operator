@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="FICODES" name="quantumleap-2-echart" version="0.1.3">
+<operator xmlns="http://wirecloud.conwet.fi.upm.es/ns/macdescription/1" vendor="FICODES" name="quantumleap-2-echart" version="0.1.99">
     <details>
-        <title>QuantumLeap 2 Echart</title>
+        <title>QuantumLeap 2 Echarts</title>
         <homepage>https://github.com/Ficodes/quantumleap-2-echart-operator</homepage>
         <authors>Carlos Blanco &lt;cblanco@ficodes.com&gt;</authors>
         <email>cblanco@ficodes.com</email>
         <image></image>
-        <description>Transform quantumLeap history into EChart dataset.</description>
+        <description>Transform quantumLeap history into ECharts dataset.</description>
         <longdescription>DESCRIPTION.md</longdescription>
         <license>Apache License 2.0</license>
         <licenseurl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseurl>
@@ -22,7 +22,8 @@
         <preference name="gradient_colors" type="text" label="gradient colors" default="#030161, red" />
         <preference name="areas" type="boolean" label="areas" default="false" />
         <preference name="show_points" type="boolean" label="Show Points" default="true" />
-        <preference name="dates_format" type="text" label="Dates format template(moment.js)" default="MMM DD HH:mm:ss" />
+        <preference name="axis_date_format" type="text" label="Date format (Axis)" description="Date forma using moment.js syntax for axis dates" default="L LTS" />
+        <preference name="tooltip_date_format" type="text" label="Date format (Tooltip)" description="Date forma using moment.js syntax for displaying dates on tooltips" default="llll" />
         <preference name="chart1_title" type="text" label="Chart 1 title" default="" />
         <preference name="chart1_type" type="text" label="Chart 1 line/bar/scatter" default="line" />
         <preference name="chart1_attr" type="text" label="Chart 1 attributes (max 2)" default="" />
@@ -45,16 +46,16 @@
                 friendcode="qlhistory"
         />
         <outputendpoint
-                name="echart_data"
-                type="text"
-                label="EChart dataset"
-                description="EChart dataset"
-                friendcode="echartconfig"
+            name="echarts_data"
+            type="text"
+            label="Dataset"
+            description="ECharts configuration/dataset to be displayed using an echart widget"
+            friendcode="echartsconfig"
         />
     </wiring>
     <scripts>
         <script src="lib/js/moment-with-locales.min.js"/>
-        <script src="js/QuantumLeap2Echart.js"></script>
+        <script src="js/QuantumLeap2Echarts.js"></script>
         <script src="js/main.js"></script>
     </scripts>
 

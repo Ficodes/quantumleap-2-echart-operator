@@ -1,13 +1,13 @@
 /*
- * QuantumLeap2Echart
+ * QuantumLeap2ECharts
  * Copyright (c) 2018 Future Internet Consulting and Development Solutions S.L.
  *
  */
 
-/* exported QuantumLeap2Echart */
+/* exported QuantumLeap2ECharts */
 /* globals moment */
 
-const QuantumLeap2Echart = (function () {
+const QuantumLeap2ECharts = (function () {
 
     "use strict";
 
@@ -15,7 +15,7 @@ const QuantumLeap2Echart = (function () {
     /* **************************** CLASS DEFINITION *******************************/
     /* *****************************************************************************/
 
-    const QuantumLeap2Echart = function QuantumLeap2Echart() {
+    const QuantumLeap2ECharts = function QuantumLeap2ECharts() {
 
         // Set preference callbacks
         MashupPlatform.prefs.registerCallback(handlerPreferences.bind(this));
@@ -36,12 +36,12 @@ const QuantumLeap2Echart = (function () {
 
     const transformQL2Echart = function transformQL2Echart(hDataset) {
 
-        let options = transform2multiChart(hDataset);
+        const options = transform2multiChart(hDataset);
 
         // hDataset.attributes.forEach( attr => {
         //    transform2LineChart(attr, hDataset.index)
         // });
-        MashupPlatform.wiring.pushEvent('echart_data', options);
+        MashupPlatform.wiring.pushEvent("echarts_data", options);
     };
     const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
@@ -65,7 +65,10 @@ const QuantumLeap2Echart = (function () {
             let chartName = MashupPlatform.prefs.get(c + '_title');
             let type = MashupPlatform.prefs.get(c + '_type');
             let fields = MashupPlatform.prefs.get(c + '_attr');
-            let dateFormat = MashupPlatform.prefs.get('dates_format');
+            let axisDateFormat = MashupPlatform.prefs.get("axis_date_format");
+            if (axisDateFormat.trim() === "") {
+                axisDateFormat = "L LTS";
+            }
 
             if (type != null && fields != null && fields !== "") {
                 res[c] = {
@@ -177,16 +180,13 @@ const QuantumLeap2Echart = (function () {
                     interval = 50 * parseInt(dates.length / 500);
                 }
 
-                if (dateFormat === "") {
-                    dateFormat = 'MMM DD HH:mm:ss';
-                }
                 // xAxis dates
                 res[c].xAxis.push({
                     data: dates,
                     gridIndex: totalCharts,
                     axisLabel: {
                         formatter: function (value, index) {
-                            return moment(value).format(dateFormat);
+                            return moment(value).format(axisDateFormat);
                         },
                         rotate: -18,
                         interval: interval,
@@ -304,6 +304,11 @@ const QuantumLeap2Echart = (function () {
             return [];
         }
 
+        let tooltipDateFormat = MashupPlatform.prefs.get("tooltip_date_format");
+        if (tooltipDateFormat === "") {
+            tooltipDateFormat = "llll";
+        }
+
         let titles = [];
         let xAxis = [];
         let yAxis = [];
@@ -320,7 +325,7 @@ const QuantumLeap2Echart = (function () {
             visualMap = visualMap.concat(chartPrefs[chart].visualMap);
         }
 
-        let multichartOption = {
+        return {
             // visualMap: [],
             title: titles,
             tooltip: {
@@ -330,8 +335,7 @@ const QuantumLeap2Echart = (function () {
                         return;
                     }
 
-                    var valuesCode = '<spam>' +
-                        moment(params[0].name + "Z").format("YYYY-MM-DD, HH:mm z") + '</spam>';
+                    var valuesCode = '<spam>' + moment(params[0].name).format(tooltipDateFormat) + '</spam>';
 
                     var keyLabels = [];
                     params.forEach((p, index) => {
@@ -353,8 +357,6 @@ const QuantumLeap2Echart = (function () {
             series: series,
             visualMap: visualMap
         };
-
-        return multichartOption;
     };
 
     /* *************************** Preference Handler *****************************/
@@ -535,6 +537,6 @@ const QuantumLeap2Echart = (function () {
 
     /* end-test-code */
 
-    return QuantumLeap2Echart;
+    return QuantumLeap2ECharts;
 
 })();
